@@ -1,0 +1,24 @@
+.table tbody>tr:nth-child(1){
+	background:#FFB6C1;
+}
+.table tbody>tr:nth-child(2){
+	background:#f6e78b;
+}
+.table tbody>tr:nth-child(3){
+	background:#f9bcbd;
+}
+.table tbody>tr:nth-child(4){
+	background:#f4e4d1;
+}
+.table tbody>tr:nth-child(5){
+	background:#e3c7d8;
+}
+.table tbody>tr:nth-child(6){
+	background:#cde8f3;
+}
+.table tbody>tr:nth-child(7){
+	background:#c5b1bd;
+}
+.navbar-nav li:not(:first-child){
+	padding: 16px 0 0 15px;
+}
