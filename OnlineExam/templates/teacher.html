@@ -79,179 +79,179 @@
     <div class="tab-content">
       {% if not ifactive == '1' %}
       <div id="home" class="container tab-pane">
-      {% else %}
-      <div id="home" class="container tab-pane active">
-      {% endif %}
-      <br>
-      <h3>个人信息</h3>
+        {% else %}
+        <div id="home" class="container tab-pane active">
+          {% endif %}
+          <br>
+          <h3>个人信息</h3>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th>属性</th>
-            <th>信息</th>
-          </tr>
-        </thead>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>属性</th>
+                <th>信息</th>
+              </tr>
+            </thead>
 
-        <tbody>
-          <tr>
-            <td>教工号</td>
-            <td>{{ teacher.id }}</td>
-          </tr>
-          <tr class="table-primary">
-            <td>姓名</td>
-            <td>{{ teacher.name }}</td>
-          </tr>
-          <tr class="table-success">
-            <td>性别</td>
-            <td>{{ teacher.sex }}</td>
-          </tr>
-          <tr class="table-danger">
-            <td>学院</td>
-            <td>{{ teacher.dept }}</td>
-          </tr>
-          <tr class="table-warning">
-            <td>邮箱地址</td>
-            <td>{{ teacher.email }}</td>
-          </tr>
-          <tr class="table-active">
-            <td>出生日期</td>
-            <td>{{ teacher.birth }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            <tbody>
+              <tr>
+                <td>教工号</td>
+                <td>{{ teacher.id }}</td>
+              </tr>
+              <tr class="table-primary">
+                <td>姓名</td>
+                <td>{{ teacher.name }}</td>
+              </tr>
+              <tr class="table-success">
+                <td>性别</td>
+                <td>{{ teacher.sex }}</td>
+              </tr>
+              <tr class="table-danger">
+                <td>学院</td>
+                <td>{{ teacher.dept }}</td>
+              </tr>
+              <tr class="table-warning">
+                <td>邮箱地址</td>
+                <td>{{ teacher.email }}</td>
+              </tr>
+              <tr class="table-active">
+                <td>出生日期</td>
+                <td>{{ teacher.birth }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-    <div id="menu1" class="container tab-pane fade">
-      <br>
-      <h3>考试信息</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>姓名</th>
-            <th>考试科目</th>
-            <th>考试时间</th>
-            <th>操作</th>
-          </tr>
-        </thead>
+        <div id="menu1" class="container tab-pane fade">
+          <br>
+          <h3>考试信息</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>姓名</th>
+                <th>考试科目</th>
+                <th>考试时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
 
-        <tbody>
-          {% for paper1 in paper %}
-          <tr class="table-info">
-            <td>{{ teacher.name }}</td>
-            <td>{{ paper1.subject }}</td>
-            <td>{{ paper1.time }}</td>
-            <td>
-              <a href="/showGrade/?subject={{ paper1.subject }}">
-                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">查看学生成绩</button>
-              </a>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+            <tbody>
+              {% for paper1 in paper %}
+              <tr class="table-info">
+                <td>{{ teacher.name }}</td>
+                <td>{{ paper1.subject }}</td>
+                <td>{{ paper1.time }}</td>
+                <td>
+                  <a href="/showGrade/?subject={{ paper1.subject }}">
+                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">查看学生成绩</button>
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
 
 
-      <div id="main" style="width: 800px;height: 500px;text-align: center;margin: 0px auto;"></div>
+          <div id="main" style="width: 800px;height: 500px;text-align: center;margin: 0px auto;"></div>
 
-      <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('main'));
-        var option = {
-          legend:{},
-          tooltip:{},
-          dataset:{
-            source:[
-              ['product', '软件工程'],
-              ['<60', {{ data.data1 }}],
-              ['60<=成绩<70', {{ data.data2 }}],
-              ['70<=成绩<80', {{ data.data3 }}],
-              ['80<=成绩<90', {{ data.data4 }}],
-              ['90<=成绩', {{ data.data5 }}]
-            ]
-          },
-        xAxis: {type: 'category'},
-        yAxis: {},
-        series: [
-          {type: 'bar'}
-        ]
-      };
-      myChart.setOption(option);
-      </script>
+          <script type="text/javascript">
+            var myChart = echarts.init(document.getElementById('main'));
+            var option = {
+              legend:{},
+              tooltip:{},
+              dataset:{
+                source:[
+                ['product', '软件工程'],
+                ['<60', {{ data.data1 }}],
+                ['60<=成绩<70', {{ data.data2 }}],
+                ['70<=成绩<80', {{ data.data3 }}],
+                ['80<=成绩<90', {{ data.data4 }}],
+                ['90<=成绩', {{ data.data5 }}]
+                ]
+              },
+              xAxis: {type: 'category'},
+              yAxis: {},
+              series: [
+              {type: 'bar'}
+              ]
+            };
+            myChart.setOption(option);
+          </script>
 
-    </div>
-      {% if not ifactive == '1' %}
-      <div id="menu2" class="container tab-pane  active">
-      {% else %}
-      <div id="menu2" class="container tab-pane fade">
-      {% endif %}
-   
-      <br>
-      <h3>考试成绩</h3>
-      <div class="container">
-        <form action="\queryStudent" method="get">
-          <input type="hidden" name="tid" value="{{ teacher.id }}">
-          <div class="row">
-            <div class="col-sm-2">
-              <div class="form-group">
-                <label>学号</label>
-                <input type="text" name="id" class="form-control" placeholder="请输入学号">
-              </div>
+        </div>
+        {% if not ifactive == '1' %}
+        <div id="menu2" class="container tab-pane  active">
+          {% else %}
+          <div id="menu2" class="container tab-pane fade">
+            {% endif %}
+            
+            <br>
+            <h3>考试成绩</h3>
+            <div class="container">
+              <form action="\queryStudent" method="get">
+                <input type="hidden" name="tid" value="{{ teacher.id }}">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                      <label>学号</label>
+                      <input type="text" name="id" class="form-control" placeholder="请输入学号">
+                    </div>
+                  </div>
+
+                  <div class="col-sm-2 offset-1">
+                    <label for="">性别</label>
+                    <div class="radio">
+                      <label><input type="radio" name="sex" value="" checked>全部</label>
+                    </div>
+
+                    <div class="radio">
+                      <label><input type="radio" name="sex" value="男">男</label>
+                    </div>
+
+                    <div class="radio">
+                      <label><input type="radio" name="sex" value="女">女</label>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-2 offset-1">
+                    <label for="">科目</label>
+                    <input type="text" name="subject" placeholder="输入科目名称">
+                  </div>
+
+                  <div class="col-sm-2 offset-2">
+                    <button class="btn btn-success" type="submit" >search</button>
+                  </div>
+                </div>
+              </form>
             </div>
+            
+            <div class="container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>专业</th>
+                    <th>科目</th>
+                    <th>成绩</th>
+                  </tr>
+                </thead>
 
-            <div class="col-sm-2 offset-1">
-              <label for="">性别</label>
-              <div class="radio">
-                <label><input type="radio" name="sex" value="" checked>全部</label>
-              </div>
-
-              <div class="radio">
-                <label><input type="radio" name="sex" value="男">男</label>
-              </div>
-
-              <div class="radio">
-                <label><input type="radio" name="sex" value="女">女</label>
-              </div>
-            </div>
-
-            <div class="col-sm-2 offset-1">
-              <label for="">科目</label>
-                <input type="text" name="subject" placeholder="输入科目名称">
-            </div>
-
-            <div class="col-sm-2 offset-2">
-              <button class="btn btn-success" type="submit" >search</button>
+                <tbody>
+                  {% for result1 in result %}
+                  <tr class="table-primary">
+                    <td>{{ result1.id }}</td>
+                    <td>{{ result1.name }}</td>
+                    <td>{{ result1.major }}</td>
+                    <td>{{ result1.subject }}</td>
+                    <td>{{ result1.grade }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
             </div>
           </div>
-        </form>
+        </div>
       </div>
-    
-      <div class="container">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>学号</th>
-              <th>姓名</th>
-              <th>专业</th>
-              <th>科目</th>
-              <th>成绩</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {% for result1 in result %}
-            <tr class="table-primary">
-              <td>{{ result1.id }}</td>
-              <td>{{ result1.name }}</td>
-              <td>{{ result1.major }}</td>
-              <td>{{ result1.subject }}</td>
-              <td>{{ result1.grade }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
-</html>
+    </body>
+    </html>
